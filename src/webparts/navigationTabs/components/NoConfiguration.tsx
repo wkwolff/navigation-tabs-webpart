@@ -1,9 +1,20 @@
+/**
+ * NoConfiguration Component
+ *
+ * Displayed when no SharePoint list has been selected in the property pane.
+ * Shows a settings icon with a message prompting the user to configure
+ * the web part. Both the heading and description text can be overridden
+ * via props, but default to the localized strings.
+ */
+
 import * as React from 'react';
 import { Icon } from '@fluentui/react/lib/Icon';
 import * as strings from 'NavigationTabsWebPartStrings';
 
 export interface INoConfigurationProps {
+  /** Main heading text. Defaults to the "Configure Navigation Tabs" string. */
   message?: string;
+  /** Subtext with instructions. Defaults to the "Select a list..." string. */
   description?: string;
 }
 

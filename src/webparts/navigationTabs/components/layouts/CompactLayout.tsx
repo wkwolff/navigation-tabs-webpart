@@ -1,11 +1,22 @@
+/**
+ * CompactLayout Component
+ *
+ * Renders navigation links as a dense vertical list. Each row shows a small
+ * icon (16px) followed by the link title. Descriptions are not displayed
+ * in this layout — it's designed for maximum information density.
+ */
+
 import * as React from 'react';
 import { INavigationLink } from '../../models/INavigationLink';
 import { LinkIcon } from '../LinkIcon';
 import styles from './CompactLayout.module.scss';
 
 export interface ICompactLayoutProps {
+  /** Links to display in the compact list. */
   links: INavigationLink[];
+  /** Default new-tab behavior; individual links can override this. */
   openInNewTabDefault: boolean;
+  /** Click handler for tracking — receives the mouse event and item ID. */
   onLinkClick: (e: React.MouseEvent<HTMLAnchorElement>, itemId: number) => void;
 }
 
@@ -13,6 +24,7 @@ export const CompactLayout: React.FC<ICompactLayoutProps> = ({ links, openInNewT
   return (
     <div className={styles.compactList}>
       {links.map((link) => {
+        // Per-link override: use the link's own setting if defined, otherwise fall back to the web part default
         const opensNew = link.openInNewTab !== undefined ? link.openInNewTab : openInNewTabDefault;
         return (
           <a
