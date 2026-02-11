@@ -19,7 +19,40 @@ A SharePoint Framework (SPFx 1.22) web part that displays navigation links organ
 
 ## Screenshots
 
-*Coming soon*
+### Card Grid
+Links displayed as a grid of cards with icons and titles, organized by category tabs.
+
+![Card Grid](assets/card-layout.png)
+
+### Card Grid with Tab Switching
+Switching between category tabs — each tab shows its own set of links.
+
+![Card Grid Tabs](assets/card-layout-tabs.png)
+
+### Compact List
+A dense list view ideal for pages with limited space.
+
+![Compact List](assets/compact-layout.png)
+
+### Tiles
+Large icon tiles for a visual, app-launcher style experience.
+
+![Tiles](assets/tile-layout.png)
+
+### Property Pane — Setup Mode
+First-time configuration: select an existing list or create a new one with the built-in List Generator.
+
+![Property Pane Setup](assets/property-pane-setup.png)
+
+### Property Pane — Configured Mode
+Full settings: list selection, tab reordering, layout type, items per row, and display toggles.
+
+![Property Pane Configured](assets/property-pane-configured.png)
+
+### Layout Type Selector
+Choose between Card Grid, Compact List, or Tiles.
+
+![Layout Dropdown](assets/layout-dropdown.png)
 
 ## List Schema
 
@@ -48,7 +81,7 @@ The web part reads from a SharePoint list with the following columns. You can cr
 ### 1. Clone the repository
 
 ```bash
-git clone https://github.com/WolffCreativeLLC/navigation-tabs-webpart.git
+git clone https://github.com/wkwolff/navigation-tabs-webpart.git
 cd navigation-tabs-webpart
 ```
 
