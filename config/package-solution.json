@@ -12,18 +12,30 @@
       "websiteUrl": "https://www.wolffcreative.com",
       "privacyUrl": "https://www.wolffcreative.com/privacy",
       "termsOfUseUrl": "https://www.wolffcreative.com/terms",
-      "mpnId": ""
+      "mpnId": "",
+      "supportUrl": "https://github.com/wkwolff/navigation-tabs-webpart/issues"
     },
     "metadata": {
       "shortDescription": {
-        "default": "Displays SharePoint list links in tabbed categories"
+        "default": "Displays SharePoint list links in tabbed categories with card, compact, and tile layouts."
       },
       "longDescription": {
-        "default": "Displays SharePoint list links in tabbed categories with multiple layout options"
+        "default": "A full-featured navigation web part that organizes SharePoint list links into tabbed categories. Choose from three layout styles (Card Grid, Compact List, or Tiles), create lists with a built-in generator, reorder tabs with drag-and-drop, track link clicks, and control per-link new tab behavior. Works in SharePoint pages, Teams tabs, and Teams personal apps."
       },
-      "screenshotPaths": [],
+      "screenshotPaths": [
+        "assets/card-layout.png",
+        "assets/card-layout-tabs.png",
+        "assets/compact-layout.png",
+        "assets/tile-layout.png",
+        "assets/property-pane-setup.png",
+        "assets/property-pane-configured.png",
+        "assets/layout-dropdown.png"
+      ],
       "videoUrl": "",
-      "categories": []
+      "categories": [
+        "Productivity",
+        "Content Management"
+      ]
     }
   },
   "paths": {

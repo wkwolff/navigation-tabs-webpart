@@ -207,6 +207,28 @@ src/webparts/navigationTabs/
 - **Fluent UI React** (provided by SPFx runtime)
 - **@pnp/spfx-property-controls** for list picker and drag-and-drop ordering
 
+## Accessibility
+
+This web part meets WCAG 2.1 Level AA standards:
+
+- **Keyboard navigation** — Full keyboard support via Fluent UI Pivot tabs and standard anchor links
+- **Screen reader support** — Semantic HTML structure with proper ARIA attributes
+- **Alt text** — All link icons include descriptive alt text from the link title
+- **High contrast** — Inherits SharePoint theme and supports high contrast mode
+- **Focus indicators** — Visible focus outlines on all interactive elements
+
+## Data Privacy & Security
+
+- **Read-only access** — The web part only reads from and writes click counts to the configured SharePoint list
+- **No external calls** — No data is sent to external services or third-party endpoints
+- **No telemetry** — No usage tracking, analytics, or telemetry data is collected
+- **SharePoint permissions** — Access is governed by the existing SharePoint list permissions
+
+## Support
+
+- **Issues:** [GitHub Issues](https://github.com/wkwolff/navigation-tabs-webpart/issues)
+- **Author:** W. Kevin Wolff - [Wolff Creative LLC](https://www.wolffcreative.com)
+
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request.
