@@ -27,14 +27,12 @@
         "assets/card-layout-tabs.png",
         "assets/compact-layout.png",
         "assets/tile-layout.png",
-        "assets/property-pane-setup.png",
-        "assets/property-pane-configured.png",
-        "assets/layout-dropdown.png"
+        "assets/property-pane-setup.png"
       ],
       "videoUrl": "",
       "categories": [
         "Productivity",
-        "Content Management"
+        "Content management"
       ]
     }
   },
