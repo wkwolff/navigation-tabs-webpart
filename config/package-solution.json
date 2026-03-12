@@ -1,7 +1,7 @@
 {
   "$schema": "https://developer.microsoft.com/json-schemas/spfx-build/package-solution.schema.json",
   "solution": {
-    "name": "navigation-tabs-client-side-solution",
+    "name": "Navigation Tabs",
     "id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
     "version": "1.0.0.0",
     "includeClientSideAssets": true,
@@ -9,9 +9,9 @@
     "isDomainIsolated": false,
     "developer": {
       "name": "Wolff Creative - W. Kevin Wolff",
-      "websiteUrl": "https://www.wolffcreative.com",
-      "privacyUrl": "https://www.wolffcreative.com/privacy",
-      "termsOfUseUrl": "https://www.wolffcreative.com/terms",
+      "websiteUrl": "https://github.com/wkwolff/navigation-tabs-webpart",
+      "privacyUrl": "https://github.com/wkwolff/navigation-tabs-webpart/blob/main/PRIVACY.md",
+      "termsOfUseUrl": "https://github.com/wkwolff/navigation-tabs-webpart/blob/main/TERMS.md",
       "mpnId": "",
       "supportUrl": "https://github.com/wkwolff/navigation-tabs-webpart/issues"
     },

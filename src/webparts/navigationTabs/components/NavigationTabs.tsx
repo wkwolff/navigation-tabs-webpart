@@ -90,7 +90,13 @@ export class NavigationTabs extends React.Component<INavigationTabsProps, INavig
       this.setState({ links, loading: false });
     } catch (err) {
       console.error('NavigationTabs: Error loading links', err);
-      this.setState({ links: [], loading: false, error: strings.ErrorMessage });
+      const errMsg = err instanceof Error ? err.message : String(err);
+      // Show the descriptive validation message if the list is incompatible,
+      // otherwise fall back to the generic error message.
+      const displayError = errMsg.startsWith('INVALID_LIST:')
+        ? errMsg.replace('INVALID_LIST:', '')
+        : strings.ErrorMessage;
+      this.setState({ links: [], loading: false, error: displayError });
     }
   }
 

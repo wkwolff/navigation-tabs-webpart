@@ -25,7 +25,33 @@ const CACHE_TTL_MS = 5 * 60 * 1000; // 5 minutes
 /** In-memory cache keyed by SharePoint list GUID. */
 const cache: Map<string, ICacheEntry> = new Map();
 
+/** Required column internal names that a list must have to be compatible. */
+const REQUIRED_COLUMNS = ['LinkURL', 'Category', 'IsActive'];
+
 export class NavigationLinksService {
+
+  /**
+   * Validates that the specified list contains the columns required by
+   * the Navigation Tabs web part. Throws a descriptive error if any
+   * required column is missing.
+   *
+   * @param listId - GUID of the SharePoint list to validate.
+   * @throws Error with message starting with "INVALID_LIST:" if columns are missing.
+   */
+  public static async validateList(listId: string): Promise<void> {
+    const sp = getSP();
+    const fields = await sp.web.lists.getById(listId).fields
+      .filter("Hidden eq false or InternalName eq 'IsActive'")
+      .select('InternalName')();
+    const fieldNames = new Set(fields.map((f: { InternalName: string }) => f.InternalName));
+    const missing = REQUIRED_COLUMNS.filter(col => !fieldNames.has(col));
+    if (missing.length > 0) {
+      throw new Error(
+        `INVALID_LIST:The selected list is missing required columns: ${missing.join(', ')}. ` +
+        'Please use the List Generator in the property pane to create a compatible list, or select a list that was previously created by Navigation Tabs.'
+      );
+    }
+  }
 
   /**
    * Fetches all active navigation links from the specified SharePoint list.
@@ -54,6 +80,9 @@ export class NavigationLinksService {
     }
 
     const sp = getSP();
+
+    // Validate the list has required columns before querying data
+    await NavigationLinksService.validateList(listId);
 
     // CAML query: only active items, sorted by SortOrder then Title.
     // ViewFields limits the columns returned to only what we need.
