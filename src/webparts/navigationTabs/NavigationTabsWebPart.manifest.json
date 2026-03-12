@@ -22,7 +22,7 @@
       "description": {
         "default": "Displays SharePoint list links in tabbed categories"
       },
-      "officeFabricIconFontName": "TabCenter",
+      "iconImageUrl": "https://raw.githubusercontent.com/wkwolff/navigation-tabs-webpart/main/assets/icon-96x96.png",
       "properties": {
         "listId": "",
         "layoutType": "card",
