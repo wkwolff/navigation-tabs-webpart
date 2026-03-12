@@ -134,21 +134,26 @@ export default class NavigationTabsWebPart extends BaseClientSideWebPart<INaviga
    */
   // eslint-disable-next-line @typescript-eslint/no-explicit-any
   private _filterCompatibleLists = async (lists: any[]): Promise<any[]> => {
-    const sp = getSP();
-    const results = await Promise.all(
-      lists.map(async (list) => {
-        try {
-          const fields = await sp.web.lists.getById(list.Id).fields
-            .filter("InternalName eq 'LinkURL' or InternalName eq 'Category' or InternalName eq 'IsActive'")
-            .select('InternalName')();
-          const names = new Set(fields.map((f: { InternalName: string }) => f.InternalName));
-          return names.has('LinkURL') && names.has('Category') && names.has('IsActive');
-        } catch {
-          return false;
-        }
-      })
-    );
-    return lists.filter((_: unknown, i: number) => results[i]);
+    try {
+      const sp = getSP();
+      const results = await Promise.all(
+        lists.map(async (list) => {
+          try {
+            const fields = await sp.web.lists.getById(list.Id).fields
+              .filter("InternalName eq 'LinkURL' or InternalName eq 'Category' or InternalName eq 'IsActive'")
+              .select('InternalName')();
+            const names = new Set(fields.map((f: { InternalName: string }) => f.InternalName));
+            return names.has('LinkURL') && names.has('Category') && names.has('IsActive');
+          } catch {
+            return false;
+          }
+        })
+      );
+      return lists.filter((_: unknown, i: number) => results[i]);
+    } catch {
+      // If filtering fails entirely, return empty — user should create via List Generator
+      return [];
+    }
   }
 
   /** Renders the NavigationTabs React component with the current property values. */

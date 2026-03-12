@@ -25,6 +25,8 @@ declare interface INavigationTabsWebPartStrings {
   NoListSelectedDescription: string;
   LoadingMessage: string;
   ErrorMessage: string;
+  IncompatibleListMessage: string;
+  IncompatibleListDescription: string;
   EmptyMessage: string;
 
   // Edit list button

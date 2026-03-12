@@ -184,9 +184,14 @@ export class NavigationTabs extends React.Component<INavigationTabsProps, INavig
       );
     }
 
-    // Fetch failed — show the error message
+    // Fetch failed — show the error message with guidance
     if (error) {
-      return <div className={styles.errorContainer}>{error}</div>;
+      return (
+        <NoConfiguration
+          message={strings.IncompatibleListMessage}
+          description={strings.IncompatibleListDescription}
+        />
+      );
     }
 
     // No active links in the list

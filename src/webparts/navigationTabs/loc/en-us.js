@@ -48,6 +48,8 @@ define([], function () {
     NoListSelectedDescription: 'Open the property pane to generate a new list or select an existing compatible list.',
     LoadingMessage: 'Loading navigation links...',
     ErrorMessage: 'An error occurred while loading navigation links.',
+    IncompatibleListMessage: 'Incompatible List Selected',
+    IncompatibleListDescription: 'The selected list does not have the required columns. Use the List Generator in the property pane to create a compatible list.',
     EmptyMessage: 'No active navigation links found in the selected list.',
   };
 });
