@@ -11,6 +11,7 @@ declare interface INavigationTabsWebPartStrings {
   DataGroupName: string;
   LayoutGroupName: string;
   ListFieldLabel: string;
+  ListFieldDescription: string;
   LayoutTypeFieldLabel: string;
   CardsPerRowFieldLabel: string;
   ShowDescriptionsFieldLabel: string;

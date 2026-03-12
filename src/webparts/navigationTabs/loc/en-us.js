@@ -18,7 +18,8 @@ define([], function () {
     TabOrderGroupName: 'Tab Order',
 
     // Data Source group
-    ListFieldLabel: 'Select a list',
+    ListFieldLabel: 'Select a compatible list',
+    ListFieldDescription: 'Only lists with the required Navigation Tabs columns are shown. Use the List Generator below to create one.',
 
     // List Generator group
     NewListNameFieldLabel: 'New list name',

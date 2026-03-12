@@ -23,6 +23,7 @@ import {
   PropertyPaneButtonType,
   PropertyPaneDropdown,
   PropertyPaneSlider,
+  PropertyPaneLabel,
   PropertyPaneTextField,
   PropertyPaneToggle,
 } from '@microsoft/sp-property-pane';
@@ -124,6 +125,30 @@ export default class NavigationTabsWebPart extends BaseClientSideWebPart<INaviga
       .catch(() => {
         this._listUrl = '';
       });
+  }
+
+  /**
+   * Filters the list picker results to only include lists that have the
+   * required Navigation Tabs columns (LinkURL, Category, IsActive).
+   * Called by PropertyFieldListPicker's onListsRetrieved callback.
+   */
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  private _filterCompatibleLists = async (lists: any[]): Promise<any[]> => {
+    const sp = getSP();
+    const results = await Promise.all(
+      lists.map(async (list) => {
+        try {
+          const fields = await sp.web.lists.getById(list.Id).fields
+            .filter("InternalName eq 'LinkURL' or InternalName eq 'Category' or InternalName eq 'IsActive'")
+            .select('InternalName')();
+          const names = new Set(fields.map((f: { InternalName: string }) => f.InternalName));
+          return names.has('LinkURL') && names.has('Category') && names.has('IsActive');
+        } catch {
+          return false;
+        }
+      })
+    );
+    return lists.filter((_: unknown, i: number) => results[i]);
   }
 
   /** Renders the NavigationTabs React component with the current property values. */
@@ -234,6 +259,7 @@ export default class NavigationTabsWebPart extends BaseClientSideWebPart<INaviga
           label: strings.ListFieldLabel,
           selectedList: this.properties.listId,
           includeHidden: false,
+          baseTemplate: 100,
           orderBy: PropertyFieldListPickerOrderBy.Title,
           onPropertyChange: this.onPropertyPaneFieldChanged.bind(this),
           properties: this.properties,
@@ -243,6 +269,11 @@ export default class NavigationTabsWebPart extends BaseClientSideWebPart<INaviga
           context: this.context as any,
           key: 'listPickerFieldId',
           disabled: false,
+          // Filter to only show lists that have the required Navigation Tabs columns
+          onListsRetrieved: this._filterCompatibleLists,
+        }),
+        PropertyPaneLabel('listIdDescription', {
+          text: strings.ListFieldDescription,
         }),
       ],
     };

@@ -8,8 +8,6 @@
   "requiresCustomScript": false,
   "supportedHosts": [
     "SharePointWebPart",
-    "TeamsPersonalApp",
-    "TeamsTab",
     "SharePointFullPage"
   ],
   "preconfiguredEntries": [
