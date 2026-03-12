@@ -44,7 +44,7 @@ define([], function () {
 
     // Component UI messages
     NoListSelectedMessage: 'Configure Navigation Tabs',
-    NoListSelectedDescription: 'Select a list in the web part properties to display navigation links.',
+    NoListSelectedDescription: 'Open the property pane to generate a new list or select an existing compatible list.',
     LoadingMessage: 'Loading navigation links...',
     ErrorMessage: 'An error occurred while loading navigation links.',
     EmptyMessage: 'No active navigation links found in the selected list.',
